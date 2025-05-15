@@ -10,6 +10,8 @@ Una calculadora simple desarrollada en Python usando Tkinter para la interfaz gr
 ## Requisitos
 - Python 3.6+
 - Tkinter (viene incluido en Python estándar).
+    ```bash
+    pip install tkinter
 
 ## Instalación
 1. Tener con anterioridad Git instalado en el sistema
