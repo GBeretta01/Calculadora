@@ -12,6 +12,7 @@ Una calculadora simple desarrollada en Python usando Tkinter para la interfaz gr
 - Tkinter (viene incluido en Python estándar).
 
 ## Instalación
-1. Clona el repositorio:
+1. Tener con anterioridad Git instalado en el sistema
+2. Clona el repositorio:
    ```bash
    git clone https://github.com/tu-usuario/calculadora-tkinter.git
