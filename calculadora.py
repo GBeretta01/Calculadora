@@ -3,7 +3,7 @@ from tkinter import ttk
 
 def interfaz_tkinter():
     root = Tk()
-    root.title("Calculadora V1.0.0")
+    root.title("Calculadora V1.0.2")
     root.resizable(0,0)
 
     pantalla = Entry(
@@ -18,7 +18,7 @@ def interfaz_tkinter():
     pantalla.grid(row=0, column=0, columnspan=4, sticky="nsew", padx=4, pady=4)
 
     botones_frame = Frame(root)
-    botones_frame.grid(row=1, column=0, padx=5, pady=5)
+    botones_frame.grid(row=1, column=0, padx=4, pady=4, sticky="nsew", columnspan=4)
 
     botones = [
                             ("C",0,2),("<-",0,3),                 
@@ -28,6 +28,9 @@ def interfaz_tkinter():
                   ("0",4,1),          ("=",4,3)
     ]
 
+    for i in range(4):  # 4 columnas (0 a 3)
+        botones_frame.grid_columnconfigure(i, weight=1)  # Todas las columnas se expanden igual
+
     for (num, x, y) in botones:
         boton = Button(
             botones_frame,
@@ -35,7 +38,7 @@ def interfaz_tkinter():
             font=("Consolas",14),
             #command=lambda t=num: click_boton(t)
         )
-        boton.grid(row=x, column=y, padx=2, pady=2)
+        boton.grid(row=x, column=y, padx=2, pady=2, sticky="nsew")
 
     root.mainloop()
 
