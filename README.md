@@ -11,7 +11,8 @@ Una calculadora simple desarrollada en Python usando Tkinter para la interfaz gr
 - Implementación de decimales.
 - Apartado científico
 - Conversor de medidas longitudinales (ft, cm, mm, etc...)
-- Conversor de temperaturas 
+- Conversor de temperaturas
+- Historial de operaciones
 
 ## Requisitos
 - Python 3.6+
