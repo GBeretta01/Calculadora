@@ -2,6 +2,14 @@ from tkinter import *
 from tkinter import Tk, Frame, Label, Button
 
 def click_boton(valor):
+    contenido_pantalla = pantalla.get()
+
+    if valor in "/+*-=" and contenido_pantalla == "":
+        return
+    
+    if valor in "+-*/" and contenido_pantalla[-1] in "+-*/=":
+        return
+    
     pantalla.insert(END, valor)
 
 root = Tk()
