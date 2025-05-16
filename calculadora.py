@@ -1,10 +1,11 @@
 from tkinter import *
-from tkinter import ttk
+from tkinter import Tk, Frame, Label, Button
 
 def interfaz_tkinter():
     root = Tk()
-    root.title("Calculadora V1.0.0")
+    root.title("Calculadora V1.0.3")
     root.resizable(0,0)
+    root.configure(background="#525252", bg="#525252")
 
     pantalla = Entry(
         root,
@@ -12,13 +13,14 @@ def interfaz_tkinter():
         justify="right",
         bd = 10,
         insertwidth=4,
-        background="#B6B6B6"
+        background="#525252"
     )
 
     pantalla.grid(row=0, column=0, columnspan=4, sticky="nsew", padx=4, pady=4)
 
     botones_frame = Frame(root)
-    botones_frame.grid(row=1, column=0, padx=5, pady=5)
+    botones_frame.grid(row=1, column=0, padx=4, pady=4, sticky="nsew", columnspan=4)
+    botones_frame.configure(background="#A3A3A3")
 
     botones = [
                             ("C",0,2),("<-",0,3),                 
@@ -28,14 +30,18 @@ def interfaz_tkinter():
                   ("0",4,1),          ("=",4,3)
     ]
 
+    for i in range(4):  
+        botones_frame.grid_columnconfigure(i, weight=1)  
+
     for (num, x, y) in botones:
         boton = Button(
             botones_frame,
             text=num,
             font=("Consolas",14),
             #command=lambda t=num: click_boton(t)
+            background="#525252"
         )
-        boton.grid(row=x, column=y, padx=2, pady=2)
+        boton.grid(row=x, column=y, padx=2, pady=2, sticky="nsew")
 
     root.mainloop()
 
