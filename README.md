@@ -6,12 +6,13 @@ Una calculadora simple desarrollada en Python usando Tkinter para la interfaz gr
 - Operaciones básicas (+, -, *, /).
 - Botón para limpiar pantalla (C).
 - Manejo de decimales.
+- Historial de operaciones
 
 ## Futuras características
 - Apartado científico
 - Conversor de medidas longitudinales (ft, cm, mm, etc...)
 - Conversor de temperaturas
-- Historial de operaciones
+
 
 ## Requisitos
 - Python 3.6+
