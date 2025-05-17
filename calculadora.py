@@ -12,6 +12,13 @@ def click_boton(valor):
     
     pantalla.insert(END, valor)
 
+def borrar_num():
+    contenido_pantalla = pantalla.get()
+
+    pantalla.delete(len(contenido_pantalla) - 1, END)
+
+
+
 root = Tk()
 root.title("Calculadora V1.0.3")
 root.resizable(0,0)
@@ -48,9 +55,14 @@ for (num, x, y) in botones:
         botones_frame,
         text=num,
         font=("Consolas",14),
-        command=lambda t=num: click_boton(t),
         background="#525252"
     )
     boton.grid(row=x, column=y, padx=2, pady=2, sticky="nsew")
+
+    if num == "<-":
+        boton.configure(command=borrar_num)
+    else:    
+        boton.configure(command=lambda t=num: click_boton(t))
+
 
 root.mainloop()
