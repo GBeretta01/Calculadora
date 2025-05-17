@@ -5,7 +5,7 @@ import os
 class CalculadoraBasica:
     def __init__(self, root):
         self.root = root
-        self.root.title("Calculadora POO V2.1.0")
+        self.root.title("Calculadora V2.1.1")
         self.historial = []
         self._configurar_ventana()
         self._crear_widgets()
