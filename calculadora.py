@@ -1,4 +1,4 @@
-from tkinter import Tk, Frame, Button, Entry, Label, Listbox
+from tkinter import *
 import csv
 import os
 
