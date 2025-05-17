@@ -5,10 +5,9 @@ Una calculadora simple desarrollada en Python usando Tkinter para la interfaz gr
 ## Características
 - Operaciones básicas (+, -, *, /).
 - Botón para limpiar pantalla (C).
-- Manejo de enteros.
+- Manejo de decimales.
 
 ## Futuras características
-- Implementación de decimales.
 - Apartado científico
 - Conversor de medidas longitudinales (ft, cm, mm, etc...)
 - Conversor de temperaturas
