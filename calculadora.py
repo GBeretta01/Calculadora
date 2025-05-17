@@ -4,10 +4,10 @@ from tkinter import Tk, Frame, Label, Button
 def click_boton(valor):
     contenido_pantalla = pantalla.get()
 
-    if valor in "/+*-=" and contenido_pantalla == "":
+    if valor in "/+*-=." and contenido_pantalla == "":
         return
     
-    if valor in "+-*/" and contenido_pantalla[-1] in "+-*/=":
+    if valor in "+-*/." and contenido_pantalla[-1] in "+-*/=.":
         return
     
     pantalla.insert(END, valor)
@@ -55,7 +55,7 @@ botones = [
     ("7",1,0),("8",1,1),("9",1,2),("*",1,3),
     ("4",2,0),("5",2,1),("6",2,2),("-",2,3),
     ("1",3,0),("2",3,1),("3",3,2),("+",3,3),
-              ("0",4,1),          ("=",4,3)
+              ("0",4,1),(".",4,2),("=",4,3)
     ]
 
 for i in range(4):  
