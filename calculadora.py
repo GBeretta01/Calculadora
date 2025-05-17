@@ -17,10 +17,21 @@ def borrar_num():
 
     pantalla.delete(len(contenido_pantalla) - 1, END)
 
+def borrar_pantalla():
+    pantalla.delete(0, END)
 
+def resultado_pantalla():
+    try:
+        expresion = pantalla.get()
+        resultado = str(eval(expresion))
+        pantalla.delete(0, END)
+        pantalla.insert(0, resultado)
+    except:
+        pantalla.delete(0, END)
+        pantalla.insert(0, "ERROR")
 
 root = Tk()
-root.title("Calculadora V1.0.3")
+root.title("Calculadora V1.1.0")
 root.resizable(0,0)
 root.configure(background="#525252", bg="#525252")
 
@@ -61,6 +72,10 @@ for (num, x, y) in botones:
 
     if num == "<-":
         boton.configure(command=borrar_num)
+    elif num == "C":
+        boton.configure(command=borrar_pantalla)
+    elif num == "=":
+        boton.configure(command=resultado_pantalla)
     else:    
         boton.configure(command=lambda t=num: click_boton(t))
 
