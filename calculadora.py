@@ -1,5 +1,7 @@
 from tkinter import *
 from tkinter import Tk, Frame, Label, Button
+import csv
+import os
 
 def calculadora_basica():
 
@@ -31,13 +33,26 @@ def calculadora_basica():
             resultado = str(eval(expresion))
             pantalla.delete(0, END)
             pantalla.insert(0, resultado)
+            guardar_historial(expresion, resultado)
         except:
             pantalla.delete(0, END)
             pantalla.insert(0, "ERROR")
+    
+    def guardar_historial(expresion, resultado):
+        nombre_csv = "historial.csv"
+
+        if not os.path.exists(nombre_csv):
+            with open(nombre_csv, "w", newline="", encoding="utf-8") as archivo:
+                writer = csv.writer(archivo)
+                writer.writerow(["expresion", "resultado"])
+
+        with open(nombre_csv, "a", newline="", encoding="utf-8") as archivo:
+            writer = csv.writer(archivo)
+            writer.writerow([expresion, resultado])
 
 
     root = Tk()
-    root.title("Calculadora V1.1.2")
+    root.title("Calculadora V1.1.3")
     root.resizable(0,0)
     root.configure(background="#525252", bg="#525252")
 
