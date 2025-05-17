@@ -31,7 +31,7 @@ def resultado_pantalla():
         pantalla.insert(0, "ERROR")
 
 root = Tk()
-root.title("Calculadora V1.1.0")
+root.title("Calculadora V1.1.1")
 root.resizable(0,0)
 root.configure(background="#525252", bg="#525252")
 
