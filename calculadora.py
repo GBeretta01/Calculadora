@@ -1,11 +1,12 @@
-from tkinter import Tk, Frame, Button, Entry, Label, Listbox
+from tkinter import *
 import csv
 import os
+import math
 
 class CalculadoraBasica:
     def __init__(self, root):
         self.root = root
-        self.root.title("Calculadora POO V2.1.0")
+        self.root.title("Calculadora V2.1.1")
         self.historial = []
         self._configurar_ventana()
         self._crear_widgets()
@@ -78,7 +79,7 @@ class CalculadoraBasica:
                 bg="#525252",
                 fg="white"
             )
-            btn.grid(row=fila, column=columna, padx=2, pady=2, sticky="nsew")
+            btn.grid(row=fila, column=columna, padx=2, pady=2, sticky="nsew", columnspan=4)
             
             if texto in comandos_especiales:
                 btn.configure(command=comandos_especiales[texto])
@@ -140,7 +141,7 @@ class CalculadoraBasica:
         self.frame_historial.grid(row=2, column=0, padx=4, pady=4, sticky="nsew", columnspan=4)
 
         Label(self.frame_historial,
-            text="Historial (últimas 10 operaciones):",
+            text="Historial: ",
             font=("Consolas", 12),
             bg="#A3A3A3", fg="white").grid(row=0, column=0, pady=5, columnspan=2)
 
@@ -175,7 +176,67 @@ class CalculadoraBasica:
         except FileNotFoundError:
             self.lista_hist.insert(0, "No hay historial disponible")
 
+class CalculadoraCientifica(CalculadoraBasica):
+    def __init__(self, root):
+        super().__init__(root)
+        self.root.title("Calculadora Cientifica V2.2.0")
+        self._crear_botones_cientificos()
+
+    def _crear_botones_cientificos(self):
+        self.frame_cientifico = Frame(self.root,
+                                      background="#a3a3a3")
+        self.frame_cientifico.grid(row=2,column=4,padx=4,pady=4,sticky="nsew", rowspan=6)
+
+        botones_cientificos = [
+            ("Sen",0),("Cos",1),("Tan",2),
+            ("Log",3),("π",4),("√",5)
+        ]
+
+        for text, fila in botones_cientificos:
+            btn = Button(
+                self.frame_cientifico,
+                text=text,
+                font=("Consolas", 14),
+                bg="#525252",
+                fg="white",
+                command=lambda t=text: self.ejecutar_funcion_cientifica(t)
+
+            )
+            btn.grid(row=fila, column=0, padx=2, pady=2, sticky="nsew")
+
+    def ejecutar_funcion_cientifica(self, funcion):
+        try:
+            valor = float(self.pantalla.get())
+            resultado = None
+
+            if funcion == "Sen":
+                resultado = round(math.sin(math.radians(valor)), 4)
+            
+            elif funcion == "Cos":
+                resultado = round(math.cos(math.radians(valor)), 4)
+            
+            elif funcion == "Tan":
+                resultado = round(math.tan(math.radians(valor)), 4)
+            
+            elif funcion == "Log":
+                resultado = round(math.log10(math.radians(valor)), 4)
+            
+            elif funcion == "π":
+                resultado = round(math.pi(math.radians(valor)), 4)
+
+            elif funcion == "√":
+                resultado = math.sqrt(valor)
+
+            if resultado is not None:
+                self.pantalla.delete(0, END)
+                self.pantalla.insert(0, str(resultado))
+                self._guardar_en_historial(f"{funcion}({valor})", resultado)
+
+        except Exception as e:
+            self.pantalla.delete(0, END)
+            self.pantalla.insert(0, "ERROR")
+
 if __name__ == "__main__":
     root = Tk()
-    app = CalculadoraBasica(root)
+    app = CalculadoraCientifica(root)
     root.mainloop()
